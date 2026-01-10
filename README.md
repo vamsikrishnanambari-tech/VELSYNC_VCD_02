@@ -33,3 +33,11 @@ This project implements a Finite State Machine (FSM)-based Traffic Light Control
 
 # 5.Continuous Operation
 * After reset is released, the FSM cycles continuously through all three states on each clock edge.
+
+# 6.Text State Diagram
+          +--------+      +---------+      +------+
+          | GREEN  | ---> | YELLOW  | ---> | RED  |
+          +--------+      +---------+      +------+
+                ^                               |
+                +-------------------------------+
+
