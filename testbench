@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+//--------------------------------------------------
+// Testbench for Traffic Signal Controller
+//--------------------------------------------------
+module traffic_signal_tb;
+
+    reg clk;
+    reg rst;
+    wire green;
+    wire yellow;
+    wire red;
+
+    // DUT Instantiation
+    traffic_signal dut (
+        .clk(clk),
+        .rst(rst),
+        .green(green),
+        .yellow(yellow),
+        .red(red)
+    );
+
+    // Clock generation (10ns period)
+    initial clk = 0;
+    always #5 clk = ~clk;
+
+    // Test sequence
+    initial begin
+        $display("Traffic Signal FSM Simulation Started");
+
+        rst = 1;
+        #20;
+        rst = 0;
+
+        #100;
+
+        $display("Simulation Completed Successfully");
+        $finish;
+    end
+
+    // Monitor outputs
+    initial begin
+        $monitor("Time=%0t | G=%b Y=%b R=%b",
+                  $time, green, yellow, red);
+    end
+
+endmodule
